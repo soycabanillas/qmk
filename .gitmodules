@@ -1,0 +1,6 @@
+[submodule "qmk_firmware"]
+	path = qmk_firmware
+	url = https://github.com/soycabanillas/qmk_firmware.git
+[submodule "qmk_userspace"]
+	path = qmk_userspace
+	url = https://github.com/soycabanillas/qmk_userspace.git

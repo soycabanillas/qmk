@@ -1,0 +1,38 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "Ubuntu",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:noble",
+	"features": {
+		"ghcr.io/devcontainers/features/nix:1": {
+			"enableFlakes": true,
+			"multiUser": true,
+			"version": "2.11"		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	"containerEnv": {
+		"NIX_CONFIG": "experimental-features = nix-command flakes",
+        "QMK_HOME": "/workspaces/qmk/qmk_firmware",
+        "QMK_USERSPACE": "/workspaces/qmk/qmk_userspace"
+    },
+	"postCreateCommand": "nix profile install .#default",
+	"postStartCommand": "nix run .#setup-qmk",
+    "postAttachCommand": "echo '🚀 QMK development environment ready!' && echo '📍 Environment: QMK_HOME=$QMK_HOME' && echo '💡 Try: nix run .#compile'",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"jnoortheen.nix-ide"
+			]
+		}
+	}
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
