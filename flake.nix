@@ -135,7 +135,7 @@
               fi
               
               echo "🔨 Compiling CRKBD keymap..."
-              qmk compile -kb crkbd/rev1 -km soycabanillas
+              qmk compile -kb crkbd/rev1 -km soycabanillas --compiledb
               
               if [ $? -eq 0 ]; then
                 echo "✅ QMK firmware compiled successfully!"
