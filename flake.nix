@@ -15,6 +15,7 @@
         commonPackages = with pkgs; [
           qmk
           keymapviz
+          python3
         ];
       in
       {
